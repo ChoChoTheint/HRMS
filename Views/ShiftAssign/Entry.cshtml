@@ -1,0 +1,34 @@
+﻿<h1>Shift Assign Form</h1>
+<form action="/shiftassign/entry" method="post">
+    <div class="mb-3">
+        <label for="" class="form-label">Employee Name</label>
+        <select name="EmployeeId" class="form-select">
+            <option value="x" selected>--select employee--</option>
+            @foreach (var employee in ViewBag.Employees)
+            {
+                <option value="@employee.Id">@employee.Name</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Shift</label>
+        <select name="ShiftId" class="form-select">
+            <option value="x" selected>--select shift--</option>
+            @foreach (var shift in ViewBag.Shifts)
+            {
+                <option value="@shift.Id">@shift.Name</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">From Date</label>
+        <input type="date" class="form-control" name="FromDate">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">To Date</label>
+        <input type="date" class="form-control" name="ToDate">
+    </div>
+   
+    <input type="submit" value="Submit" />
+    <input type="reset" value="Cancle" />
+</form>

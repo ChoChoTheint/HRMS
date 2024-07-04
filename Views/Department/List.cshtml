@@ -1,0 +1,67 @@
+﻿@model IList<DepartmentViewModel>
+@if (TempData["info"] != null)
+{
+    @if (TempData["info"].ToString().Contains("delete"))
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["info"]
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["info"]
+        </div>
+    }
+}
+
+
+<h1>Department List Information</h1>
+<div id="idEmployee">
+<table class="table" >
+    <tr>
+        <th>Sr.</th>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Employee Count</th>
+        <th>Actions</th>
+    </tr>
+    @{
+        int index = 1;
+    }
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@index</td>
+            <td>@item.Code</td>
+            <td>@item.Name</td>
+            <td>@item.ExtensionPhone</td>
+            <td>@item.TotalEmployeeCount</td>
+            <td>
+                <a href="/department/edit?Id=@item.Id">Edit</a>
+                <a href="/department/delete?Id=@item.Id" onclick="return confirm('Are you sure to delete the record?')">Delete</a>
+                @* <a href="/department/ExportToExcel" >Report</a> *@
+            </td>
+        </tr>
+        index++;
+    }
+</table>
+</div>
+<form action="ExportToExcel" method="post" id="exportForm">
+    <input type="hidden" name="htmlTable" id="htmlTable" />
+    <button type="button" id="btnExport" class="btn btn-primary">Export to Excel</button>
+</form>
+
+<script>
+    $(function () {
+        $("#btnExport").click(function () {
+            // Set the value of the hidden input to the HTML content of the table
+            $("#htmlTable").val($("#idEmployee").html());
+
+            // Submit the form
+            $("#exportForm").submit();
+        });
+    });
+</script>

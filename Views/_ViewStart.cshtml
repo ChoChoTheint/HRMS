@@ -1,0 +1,12 @@
+﻿
+@if (User.IsInRole("HR"))
+{
+    Layout = "LayoutAdmin";
+}
+else if (User.IsInRole("EMPLOYEE")){
+    Layout = "LayoutEmployee";
+}
+else
+{
+    Layout = "_Layout";
+}

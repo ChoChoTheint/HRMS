@@ -1,0 +1,75 @@
+﻿<h1>Employee Form</h1>
+<form action="/employee/entry" method="post">
+    <div class="mb-3">
+        <label for="" class="form-label">Code</label>
+        <input type="text" class="form-control" name="Code">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Name</label>
+        <input type="text" class="form-control" name="Name">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Email</label>
+        <input type="email" class="form-control" name="Email">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Phone</label>
+        <input type="number" class="form-control" name="Phone">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">DOB</label>
+        <input type="date" class="form-control" name="DOB">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Date Of Employee</label>
+        <input type="date" class="form-control" name="DOE">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">DOR</label>
+        <input type="date" class="form-control" name="DOR">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Address</label>
+        <input type="text" class="form-control" name="Address">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Basic Salary</label>
+        <input type="number" class="form-control" name="BasicSalary">
+    </div>
+    <div class="mb-3">
+        <div class="form-check">
+            <input type="radio" class="form-check-input" name="Gender" value="Male">
+            <label for="" class="form-check-label">Male</label>
+        </div>
+        <div class="form-check">
+            <input type="radio" class="form-check-input" name="Gender" value="Female">
+            <label for="" class="form-check-label">Female</label>
+        </div>
+        <div class="form-check">
+            <input type="radio" class="form-check-input" name="Gender" value="Other">
+            <label for="" class="form-check-label">Other</label>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Department</label>
+        <select name="DepartmentId" class="form-select">
+            <option value="x" selected>--select department--</option>
+            @foreach (var department in ViewBag.Departments)
+            {
+                <option value="@department.Id">@department.Code</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Position</label>
+        <select name="PositionId" class="form-select">
+            <option value="x" selected>--select position--</option>
+            @foreach (var position in ViewBag.Positions)
+            {
+                <option value="@position.Id">@position.Code</option>
+            }
+        </select>
+    </div>
+    <input type="submit" value="Submit" />
+    <input type="reset" value="Cancle" />
+</form>

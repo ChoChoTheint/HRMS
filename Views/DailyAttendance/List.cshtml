@@ -1,0 +1,50 @@
+﻿@model IList<DailyAttendanceViewModel>
+@if (TempData["info"] != null)
+{
+    @if (TempData["info"].ToString().Contains("delete"))
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["info"]
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["info"]
+        </div>
+    }
+}
+
+
+<h1>Employee List Information</h1>
+<table class="table">
+    <tr>
+        <th>Sr.</th>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Attendance Date</th>
+        <th>In Time</th>
+        <th>Out Time</th>
+        <th>Action</th>
+    </tr>
+    @{
+        int index = 1;
+    }
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@index</td>
+            <td>@item.EmployeeInfo</td>
+            <td>@item.DepartmentInfo</td>
+            <td>@item.AttendanceDate</td>
+            <td>@item.InTime</td>
+            <td>@item.OutTime</td>
+            <td>
+                <a href="/dailyattendance/edit?Id=@item.Id">Edit</a>
+                <a href="/dailyattendance/delete?Id=@item.Id" onclick="return confirm('Are you sure to delete the record?')">Delete</a>
+            </td>
+        </tr>
+        index++;
+    }
+</table>

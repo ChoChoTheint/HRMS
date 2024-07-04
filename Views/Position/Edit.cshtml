@@ -1,0 +1,19 @@
+﻿@model PositionViewModel
+<h1>Position Update Form</h1>
+<form action="/position/update" method="post">
+    <input type="text" hidden name="Id" value="@Model.Id"/>
+    <div class="mb-3">
+        <label for="" class="form-label">Code</label>
+        <input type="text" class="form-control" value="@Model.Code" name="Code">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Name</label>
+        <input type="text" class="form-control" value="@Model.Name" name="Name">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Level</label>
+        <input type="text" class="form-control" value="@Model.Level" name="Level">
+    </div>
+    <input type="submit" value="Submit" />
+    <input type="reset" value="Cancle" />
+</form>

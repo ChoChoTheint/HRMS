@@ -1,0 +1,64 @@
+﻿@model IList<EmployeeViewModel>
+@if (TempData["info"] != null)
+{
+    @if (TempData["info"].ToString().Contains("delete"))
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["info"]
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["info"]
+        </div>
+    }
+}
+
+
+<h1>Employee List Information</h1>
+<table class="table">
+    <tr>
+        <th>Sr.</th>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>DOB</th>
+        <th>DOE</th>
+        <th>DOR</th>
+        <th>Address</th>
+        <th>Basic Salary</th>
+        <th>Gender</th>
+        <th>Department</th>
+        <th>Position</th>
+        <th>Action</th>
+    </tr>
+    @{
+        int index = 1;
+    }
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@index</td>
+            <td>@item.Code</td>
+            <td>@item.Name</td>
+            <td>@item.Email</td>
+            <td>@item.Phone</td>
+            <td>@item.DOB.ToString("dd-MM-yyyy")</td>
+            <td>@item.DOE.ToString("dd-MM-yyyy")</td>
+            <td>@item.DOR</td>
+            <td>@item.Address</td>
+            <td>@item.BasicSalary</td>
+            <td>@item.Gender</td>
+            <td>@item.DepartmentInfo</td>
+            <td>@item.PositionInfo</td>
+            <td>
+                <a href="/employee/edit?Id=@item.Id">Edit</a>
+                <a href="/employee/delete?Id=@item.Id" onclick="return confirm('Are you sure to delete the record?')">Delete</a>
+            </td>
+        </tr>
+        index++;
+    }
+</table>

@@ -1,0 +1,46 @@
+﻿@model IList<PositionViewModel>
+@if (TempData["info"] != null)
+{
+    @if (TempData["info"].ToString().Contains("delete"))
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["info"]
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["info"]
+        </div>
+    }
+}
+
+
+<h1>Position List Information</h1>
+<table class="table">
+    <tr>
+        <th>Sr.</th>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Level</th>
+        <th>Actions</th>
+    </tr>
+    @{
+        int index = 1;
+    }
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@index</td>
+            <td>@item.Code</td>
+            <td>@item.Name</td>
+            <td>@item.Level</td>
+            <td>
+                <a href="/position/edit?Id=@item.Id">Edit</a>
+                <a href="/position/delete?Id=@item.Id" onclick="return confirm('Are you sure to delete the record?')">Delete</a>
+            </td>
+        </tr>
+        index++;
+    }
+</table>

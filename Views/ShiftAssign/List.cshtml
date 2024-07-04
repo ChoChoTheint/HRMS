@@ -1,0 +1,48 @@
+﻿@model IList<ShiftAssignViewModel>
+@if (TempData["info"] != null)
+{
+    @if (TempData["info"].ToString().Contains("delete"))
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["info"]
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["info"]
+        </div>
+    }
+}
+
+
+<h1>Shift Assign Information</h1>
+<table class="table">
+    <tr>
+        <th>Sr.</th>
+        <th>Employee Name</th>
+        <th>Shift</th>
+        <th>From Date</th>
+        <th>To Date</th>
+        <th>Action</th>
+    </tr>
+    @{
+        int index = 1;
+    }
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@index</td>
+            <td>@item.EmployeeInfo</td>
+            <td>@item.ShiftInfo</td>
+            <td>@item.FromDate</td>
+            <td>@item.ToDate</td>
+            <td>
+                <a href="/shiftassign/edit?Id=@item.Id">Edit</a>
+                <a href="/shiftassign/delete?Id=@item.Id" onclick="return confirm('Are you sure to delete the record?')">Delete</a>
+            </td>
+        </tr>
+        index++;
+    }
+</table>

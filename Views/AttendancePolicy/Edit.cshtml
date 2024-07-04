@@ -1,0 +1,27 @@
+﻿@model AttendancePolicyViewModel
+<h1>Attendance Policy Update Form</h1>
+<form action="/attendancepolicy/update" method="post">
+    <input type="text" hidden name="Id" value="@Model.Id" />
+    <div class="mb-3">
+        <label for="" class="form-label">Name</label>
+        <input type="text" class="form-control" name="Name" value="@Model.Name">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Number Of Late Time</label>
+        <input type="number" class="form-control" name="NumberOfLateTime" value="@Model.NumberOfLateTime">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Number Of Early Out Time</label>
+        <input type="number" class="form-control" name="NumberOfEarlyOutTime" value="@Model.NumberOfEarlyOutTime">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Deduction In Amount</label>
+        <input type="number" class="form-control" name="DeductionInAmount" value="@Model.DeductionInAmount">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Deduction In Day</label>
+        <input type="number" class="form-control" name="DeductionDay" value="@Model.DeductionDay">
+    </div>
+    <input type="submit" value="Submit" />
+    <input type="reset" value="Cancle" />
+</form>

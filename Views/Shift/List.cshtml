@@ -1,0 +1,52 @@
+﻿@model IList<ShiftViewModel>
+@if (TempData["info"] != null)
+{
+    @if (TempData["info"].ToString().Contains("delete"))
+    {
+        <div class="alert alert-danger" role="alert">
+            @TempData["info"]
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success" role="alert">
+            @TempData["info"]
+        </div>
+    }
+}
+
+
+<h1>Policy List Information</h1>
+<table class="table">
+    <tr>
+        <th>Sr.</th>
+        <th>Name</th>
+        <th>In Time</th>
+        <th>Out Time</th>
+        <th>Late After</th>
+        <th>Early Out Before</th>
+        <th>Policy</th>
+        <th>Action</th>
+    </tr>
+    @{
+        int index = 1;
+    }
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@index</td>
+            <td>@item.Name</td>
+            <td>@item.InTime</td>
+            <td>@item.OutTime</td>
+            <td>@item.LateAfter</td>
+            <td>@item.EarlyOutBefore</td>
+            <td>@item.AttendancePolicyInfo</td>
+            <td>
+                <a href="/shift/edit?Id=@item.Id">Edit</a>
+                <a href="/shift/delete?Id=@item.Id" onclick="return confirm('Are you sure to delete the record?')">Delete</a>
+            </td>
+        </tr>
+        index++;
+    }
+</table>

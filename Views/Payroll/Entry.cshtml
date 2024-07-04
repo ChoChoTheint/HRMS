@@ -1,0 +1,33 @@
+﻿<h1>Payroll Process</h1>
+<form action="/payroll/entry" method="post">
+    <div class="mb-3">
+        <label for="" class="form-label">From Date</label>
+        <input type="datetime" class="form-control" name="FromDate">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">To Date</label>
+        <input type="datetime" class="form-control" name="ToDate">
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Employee Name</label>
+        <select name="EmployeeId" class="form-select">
+            <option value="x" selected>--select employee--</option>
+            @foreach (var employee in ViewBag.Employees)
+            {
+                <option value="@employee.Id">@employee.Name</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Department</label>
+        <select name="DepartmentId" class="form-select">
+            <option value="x" selected>--select department--</option>
+            @foreach (var department in ViewBag.Departments)
+            {
+                <option value="@department.Id">@department.Name</option>
+            }
+        </select>
+    </div>
+    <input type="submit" value="Submit" />
+    <input type="reset" value="Cancle" />
+</form>
